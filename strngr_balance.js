@@ -1,5 +1,6 @@
 var wallets = args.widgetParameter;
 var wallet = (wallets.replace(' ','')).split(';')
+// Use the line above to enter wallet address through Scriptable Parameter User Interface when editing the widget on phone desktop
 
 var n = 0;
  var usd = 0;
@@ -51,7 +52,7 @@ if (config.runsInWidget) {
 
   widget.addSpacer(4);
 
-  const strongtext = widget.addText(`STRONG: ${strong.toFixed(2)}`);
+  const strongtext = widget.addText(`STRNGR: ${strong.toFixed(2)}`);
   strongtext.textColor = Color.white();
   strongtext.font = new Font("Helvetica", 14);
 
