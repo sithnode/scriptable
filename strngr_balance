@@ -22,10 +22,8 @@ while (n < wallet.length) {
 
   var i =0;
   while (i < total_cnt) {
-
     usd = usd + resp['portfolio_item_list'][i]['stats']['asset_usd_value'];
     strong = strong + resp['portfolio_item_list'][i]['detail']['token_list'][0]['amount'];
-
     i = i+1;
   }
 
@@ -44,31 +42,32 @@ var usd = strong * cg_price;
 
 if (config.runsInWidget) {
 
- 
-    const widget = new ListWidget();
-    widget.backgroundColor=new Color("#000000");
-    const title = widget.addText("Strong Reward Balance");
-    title.textColor = Color.white();
-    title.textOpacity = 0.8;
-    title.font = new Font("Helvetica-Light ", 10);
+  const widget = new ListWidget();
+  widget.backgroundColor=new Color("#000000");
+  const title = widget.addText("Strong Reward Balance");
+  title.textColor = Color.white();
+  title.textOpacity = 0.8;
+  title.font = new Font("Helvetica-Light ", 10);
 
-    widget.addSpacer(4);
+  widget.addSpacer(4);
 
-    const strongtext = widget.addText(`STRONG: ${strong.toFixed(2)}`);
-    strongtext.textColor = Color.white();
-    strongtext.font = new Font("Helvetica", 14);
+  const strongtext = widget.addText(`STRONG: ${strong.toFixed(2)}`);
+  strongtext.textColor = Color.white();
+  strongtext.font = new Font("Helvetica", 14);
 
-    widget.addSpacer(2);
-    const usdtext = widget.addText(`USD: ${formatter.format(usd.toFixed(0))}`);
-    usdtext.textColor = Color.white();
-    usdtext.font = new Font("Helvetica", 14);
-    widget.addSpacer(4);
+  widget.addSpacer(2);
 
-const sig = widget.addText("@SithNode");
-    sig.textColor = Color.red();
-    sig.textOpacity = 0.8;
-    sig.font = new Font("Helvetica", 10);
-    Script.setWidget(widget);
-    Script.complete();
-    widget.presentMedium()
+  const usdtext = widget.addText(`USD: ${formatter.format(usd.toFixed(0))}`);
+  usdtext.textColor = Color.white();
+  usdtext.font = new Font("Helvetica", 14);
+
+  widget.addSpacer(4);
+
+  const sig = widget.addText("@SithNode");
+  sig.textColor = Color.red();
+  sig.textOpacity = 0.8;
+  sig.font = new Font("Helvetica", 10);
+  Script.setWidget(widget);
+  Script.complete();
+  widget.presentMedium()
 }
