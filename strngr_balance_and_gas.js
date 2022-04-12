@@ -1,12 +1,11 @@
-//STILL TESTING - NOT WORKING
+// Enter wallet address through Scriptable Parameter User Interface when editing the widget on phone desktop. Semi colon separated for multiple wallets
 
 var wallets = args.widgetParameter;
 var wallet = (wallets.replace(' ','')).split(';')
-// Use the line above to enter wallet address through Scriptable Parameter User Interface when editing the widget on phone desktop
 
 var n = 0;
- var usd = 0;
- var strong = 0;
+var usd = 0;
+var strong = 0;
 
 while (n < wallet.length) {
 
@@ -33,8 +32,6 @@ while (n < wallet.length) {
   n =n +1;
 }
 
-
-
 var formatter = new Intl.NumberFormat('en-US', {
   style: 'currency',
   currency: 'USD',
@@ -51,15 +48,13 @@ if (config.runsInWidget) {
 
   const widget = new ListWidget();
   widget.backgroundColor=new Color("#000000");
-
-  widget.addSpacer(2);
-  
+ 
   const fastGas = (res_eth.fast/10);
   const fast = widget.addText(`Gas Price: ${fastGas}`);
   fast.textColor = Color.white();
   fast.font = new Font("Helvetica", 14);
   
-  widget.addSpacer(4);
+  widget.addSpacer(8);
   
   const title = widget.addText("Strong Reward Balance");
   title.textColor = Color.white();
@@ -84,6 +79,7 @@ if (config.runsInWidget) {
   sig.textColor = Color.red();
   sig.textOpacity = 0.8;
   sig.font = new Font("Helvetica", 10);
+ 
   Script.setWidget(widget);
   Script.complete();
   widget.presentMedium()
